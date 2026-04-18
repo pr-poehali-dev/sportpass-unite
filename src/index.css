@@ -4,40 +4,40 @@
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
-    --foreground: 0 0% 98%;
+    --background: 220 20% 96%;
+    --foreground: 220 20% 10%;
 
-    --card: 220 18% 9%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
 
-    --popover: 220 18% 9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
 
-    --primary: 24 100% 55%;
+    --primary: 24 93% 47%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 20% 20%;
 
-    --muted: 220 15% 13%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 220 15% 90%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 197 100% 50%;
-    --accent-foreground: 220 20% 6%;
+    --accent: 197 100% 40%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 16%;
-    --input: 220 15% 16%;
-    --ring: 24 100% 55%;
+    --border: 220 15% 86%;
+    --input: 220 15% 86%;
+    --ring: 24 93% 47%;
 
     --radius: 0.75rem;
 
-    --neon-orange: #ff6b1a;
-    --neon-blue: #00d4ff;
-    --dark-bg: #0b0e14;
-    --card-bg: #111520;
+    --neon-orange: #e8500a;
+    --neon-blue: #0099cc;
+    --dark-bg: #f4f6fa;
+    --card-bg: #ffffff;
   }
 }
 
@@ -80,18 +80,18 @@
 
   .glow-orange {
     box-shadow:
-      0 0 20px rgba(255, 107, 26, 0.4),
-      0 0 60px rgba(255, 107, 26, 0.15);
+      0 4px 14px rgba(232, 80, 10, 0.35),
+      0 2px 6px rgba(232, 80, 10, 0.2);
   }
 
   .glow-blue {
     box-shadow:
-      0 0 20px rgba(0, 212, 255, 0.4),
-      0 0 60px rgba(0, 212, 255, 0.15);
+      0 4px 14px rgba(0, 153, 204, 0.35),
+      0 2px 6px rgba(0, 153, 204, 0.2);
   }
 
   .glow-text-orange {
-    text-shadow: 0 0 30px rgba(255, 107, 26, 0.8);
+    text-shadow: none;
   }
 
   .noise-bg {
@@ -106,7 +106,7 @@
 
   .card-hover:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(255, 107, 26, 0.2);
+    box-shadow: 0 12px 40px rgba(232, 80, 10, 0.15);
   }
 
   .nav-item {

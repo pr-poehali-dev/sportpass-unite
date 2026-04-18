@@ -94,7 +94,7 @@ function SectionHeader({ tag, title, subtitle, accent }: { tag: string; title: s
       <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style={{ background: bg, color }}>
         {tag}
       </div>
-      <h2 className="font-display text-3xl md:text-4xl font-bold text-white uppercase mb-3">{title}</h2>
+      <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 uppercase mb-3">{title}</h2>
       <p className="text-gray-400 max-w-xl">{subtitle}</p>
     </div>
   );
@@ -130,11 +130,11 @@ export default function SportPass() {
       </div>
 
       {/* HEADER */}
-      <header className="sticky top-0 z-50 border-b border-white/5" style={{ background: "rgba(11,14,20,0.95)", backdropFilter: "blur(20px)" }}>
+      <header className="sticky top-0 z-50 border-b border-black/8" style={{ background: "rgba(244,246,250,0.95)", backdropFilter: "blur(20px)" }}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollTo("home")}>
             <div className="w-8 h-8 rounded-lg flex items-center justify-center font-display font-bold text-sm text-white" style={{ background: "var(--neon-orange)" }}>SP</div>
-            <span className="font-display text-lg font-semibold tracking-wide text-white">SPORT<span style={{ color: "var(--neon-orange)" }}>PASS</span></span>
+            <span className="font-display text-lg font-semibold tracking-wide text-gray-900">SPORT<span style={{ color: "var(--neon-orange)" }}>PASS</span></span>
           </div>
 
           <nav className="hidden xl:flex items-center gap-6">
@@ -142,7 +142,7 @@ export default function SportPass() {
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`nav-item text-xs font-semibold uppercase tracking-widest transition-colors ${activeSection === item.id ? "text-white active" : "text-gray-400 hover:text-white"}`}
+                className={`nav-item text-xs font-semibold uppercase tracking-widest transition-colors ${activeSection === item.id ? "text-gray-900 active" : "text-gray-400 hover:text-gray-900"}`}
               >
                 {item.label}
               </button>
@@ -158,20 +158,20 @@ export default function SportPass() {
               <Icon name="User" size={14} />
               Войти
             </button>
-            <button className="xl:hidden text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            <button className="xl:hidden text-gray-400 hover:text-gray-900" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               <Icon name={mobileMenuOpen ? "X" : "Menu"} size={22} />
             </button>
           </div>
         </div>
 
         {mobileMenuOpen && (
-          <div className="xl:hidden border-t border-white/5 py-4" style={{ background: "rgba(11,14,20,0.98)" }}>
+          <div className="xl:hidden border-t border-black/8 py-4" style={{ background: "rgba(244,246,250,0.98)" }}>
             <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 gap-2">
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors text-left"
+                  className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-black/5 transition-colors text-left"
                 >
                   <Icon name={item.icon} size={15} />
                   {item.label}
@@ -184,25 +184,25 @@ export default function SportPass() {
 
       {/* ===== HERO ===== */}
       <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${HERO_IMG})`, filter: "brightness(0.25) saturate(1.5)" }} />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(11,14,20,0.9) 0%, rgba(11,14,20,0.5) 50%, rgba(255,107,26,0.1) 100%)" }} />
-        <div className="absolute top-20 right-10 w-64 h-64 rounded-full opacity-20 blur-3xl" style={{ background: "var(--neon-orange)" }} />
-        <div className="absolute bottom-20 left-10 w-48 h-48 rounded-full opacity-15 blur-3xl" style={{ background: "var(--neon-blue)" }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${HERO_IMG})`, filter: "brightness(0.45) saturate(1.2)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(244,246,250,0.88) 0%, rgba(244,246,250,0.55) 50%, rgba(232,80,10,0.08) 100%)" }} />
+        <div className="absolute top-20 right-10 w-64 h-64 rounded-full opacity-15 blur-3xl" style={{ background: "var(--neon-orange)" }} />
+        <div className="absolute bottom-20 left-10 w-48 h-48 rounded-full opacity-10 blur-3xl" style={{ background: "var(--neon-blue)" }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-24 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="flex items-center gap-2 mb-6">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-white" style={{ background: "var(--neon-orange)" }}>🔥 Сезон 2026</span>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-gray-300 border border-white/20">Персональные рекомендации</span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-gray-600 border border-black/15">Персональные рекомендации</span>
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl font-bold leading-none mb-6 uppercase">
-              <span className="text-white">ТВОЙ</span><br />
+              <span className="text-gray-900">ТВОЙ</span><br />
               <span className="gradient-text">СПОРТИВНЫЙ</span><br />
-              <span className="text-white">МИР</span>
+              <span className="text-gray-900">МИР</span>
             </h1>
 
-            <p className="text-gray-300 text-lg mb-8 leading-relaxed max-w-md">
+            <p className="text-gray-600 text-lg mb-8 leading-relaxed max-w-md">
               Тренировки, билеты, экипировка и сообщество — всё в одном месте. Умные рекомендации на основе твоих интересов.
             </p>
 
@@ -216,7 +216,7 @@ export default function SportPass() {
               </button>
               <button
                 onClick={() => scrollTo("live")}
-                className="px-8 py-4 rounded-xl font-bold text-white text-lg uppercase tracking-wide border border-white/20 hover:border-white/40 transition-all hover:bg-white/5 flex items-center gap-2"
+                className="px-8 py-4 rounded-xl font-bold text-gray-800 text-lg uppercase tracking-wide border border-black/15 hover:border-black/30 transition-all hover:bg-black/5 flex items-center gap-2"
               >
                 <span className="w-2 h-2 rounded-full inline-block live-badge" />
                 Эфиры сейчас
@@ -227,31 +227,31 @@ export default function SportPass() {
               {[{ val: "50K+", label: "Тренировок" }, { val: "1.2M", label: "Атлетов" }, { val: "4.9★", label: "Рейтинг" }].map((s) => (
                 <div key={s.label}>
                   <div className="font-display text-3xl font-bold" style={{ color: "var(--neon-orange)" }}>{s.val}</div>
-                  <div className="text-gray-400 text-sm mt-1">{s.label}</div>
+                  <div className="text-gray-500 text-sm mt-1">{s.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="hidden md:block">
-            <div className="rounded-2xl border border-white/10 p-6" style={{ background: "rgba(17,21,32,0.9)", backdropFilter: "blur(20px)" }}>
+            <div className="rounded-2xl border border-black/8 p-6 shadow-xl" style={{ background: "rgba(255,255,255,0.92)", backdropFilter: "blur(20px)" }}>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--neon-blue)" }}>🎯 Рекомендовано для тебя</span>
-                <span className="text-xs text-gray-500">На основе 42 тренировок</span>
+                <span className="text-xs text-gray-400">На основе 42 тренировок</span>
               </div>
               <div className="space-y-3">
                 {WORKOUTS.slice(0, 3).map((w) => (
-                  <div key={w.title} className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
+                  <div key={w.title} className="flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 transition-colors cursor-pointer">
                     <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                       <img src={w.image} alt="" className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-sm font-semibold text-white truncate">{w.title}</div>
+                      <div className="text-sm font-semibold text-gray-900 truncate">{w.title}</div>
                       <div className="text-xs text-gray-400">{w.trainer} • {w.duration}</div>
                     </div>
                     <div className="flex-shrink-0 text-right">
                       <div className="text-xs font-bold" style={{ color: "var(--neon-orange)" }}>{w.match}%</div>
-                      <div className="text-xs text-gray-500">совпадение</div>
+                      <div className="text-xs text-gray-400">совпадение</div>
                     </div>
                   </div>
                 ))}
@@ -274,7 +274,7 @@ export default function SportPass() {
           <SectionHeader tag="💪 Тренировки" title="Программы под тебя" subtitle="ИИ подбирает занятия на основе твоей истории и интересов" accent="orange" />
 
           {/* Filters */}
-          <div className="rounded-2xl border border-white/5 p-4 mb-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center" style={{ background: "var(--card-bg)" }}>
+          <div className="rounded-2xl border border-black/8 p-4 mb-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center shadow-sm" style={{ background: "var(--card-bg)" }}>
             {/* Category filter */}
             <div className="flex-1">
               <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-2">Категория</p>
@@ -288,7 +288,7 @@ export default function SportPass() {
                       className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
                       style={active
                         ? { background: "var(--neon-orange)", color: "#fff" }
-                        : { border: "1px solid rgba(255,255,255,0.1)", color: "#9ca3af" }
+                        : { border: "1px solid rgba(0,0,0,0.12)", color: "#6b7280" }
                       }
                     >
                       {cat}
@@ -316,7 +316,7 @@ export default function SportPass() {
                       className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
                       style={active
                         ? { background: color, color: "#fff" }
-                        : { border: "1px solid rgba(255,255,255,0.1)", color: "#9ca3af" }
+                        : { border: "1px solid rgba(0,0,0,0.12)", color: "#6b7280" }
                       }
                     >
                       {lvl}
@@ -330,7 +330,7 @@ export default function SportPass() {
             {(filterCategory !== "Все" || filterLevel !== "Любой уровень") && (
               <button
                 onClick={() => { setFilterCategory("Все"); setFilterLevel("Любой уровень"); }}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition-all flex-shrink-0"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-black/10 text-gray-500 hover:text-gray-800 hover:border-black/25 transition-all flex-shrink-0"
               >
                 <Icon name="X" size={11} />
                 Сбросить
@@ -340,8 +340,8 @@ export default function SportPass() {
 
           {/* Results count */}
           <div className="flex items-center justify-between mb-5">
-            <p className="text-sm text-gray-400">
-              Найдено: <span className="font-semibold text-white">{filteredWorkouts.length}</span> тренировок
+            <p className="text-sm text-gray-500">
+              Найдено: <span className="font-semibold text-gray-900">{filteredWorkouts.length}</span> тренировок
             </p>
             {filteredWorkouts.length > 0 && (
               <p className="text-xs text-gray-500">
@@ -356,19 +356,19 @@ export default function SportPass() {
               {filteredWorkouts.map((w) => {
                 const lvlColor: Record<string, string> = { "Начинающий": "#22C55E", "Средний": "#EAB308", "Продвинутый": "#EF4444" };
                 return (
-                  <div key={w.title} className="rounded-2xl overflow-hidden border border-white/5 card-hover cursor-pointer" style={{ background: "var(--card-bg)" }}>
+                  <div key={w.title} className="rounded-2xl overflow-hidden border border-black/8 card-hover cursor-pointer shadow-sm" style={{ background: "var(--card-bg)" }}>
                     <div className="relative h-40">
                       <img src={w.image} alt="" className="w-full h-full object-cover" />
-                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(11,14,20,0.9) 0%, transparent 60%)" }} />
+                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%)" }} />
                       <div className="absolute top-3 right-3">
                         <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold text-white" style={{ background: "var(--neon-orange)" }}>{w.match}% совпадение</span>
                       </div>
                       <div className="absolute bottom-3 left-3">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs border border-white/20 text-white">{w.category}</span>
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-white/80 text-gray-800 font-medium">{w.category}</span>
                       </div>
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold text-white mb-1 leading-tight">{w.title}</h3>
+                      <h3 className="font-semibold text-gray-900 mb-1 leading-tight">{w.title}</h3>
                       <p className="text-xs text-gray-400 mb-3">{w.trainer}</p>
                       <div className="flex items-center justify-between text-xs">
                         <span className="text-gray-400 flex items-center gap-1"><Icon name="Clock" size={12} />{w.duration}</span>
@@ -380,9 +380,9 @@ export default function SportPass() {
               })}
             </div>
           ) : (
-            <div className="text-center py-16 rounded-2xl border border-white/5" style={{ background: "var(--card-bg)" }}>
+            <div className="text-center py-16 rounded-2xl border border-black/8 shadow-sm" style={{ background: "var(--card-bg)" }}>
               <div className="text-4xl mb-3">🔍</div>
-              <p className="text-white font-semibold mb-1">Тренировок не найдено</p>
+              <p className="text-gray-900 font-semibold mb-1">Тренировок не найдено</p>
               <p className="text-gray-400 text-sm mb-4">Попробуй изменить фильтры</p>
               <button
                 onClick={() => { setFilterCategory("Все"); setFilterLevel("Любой уровень"); }}
@@ -395,7 +395,7 @@ export default function SportPass() {
           )}
 
           <div className="mt-8 text-center">
-            <button className="px-8 py-3 rounded-xl font-semibold border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition-all">
+            <button className="px-8 py-3 rounded-xl font-semibold border border-black/10 text-gray-600 hover:text-gray-900 hover:border-black/25 transition-all">
               Смотреть все 50 000+ тренировок
             </button>
           </div>
@@ -403,25 +403,25 @@ export default function SportPass() {
       </section>
 
       {/* ===== TICKETS ===== */}
-      <section id="tickets" className="py-20 diagonal-stripe" style={{ background: "#0E1118" }}>
+      <section id="tickets" className="py-20 diagonal-stripe" style={{ background: "#eef1f7" }}>
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeader tag="🎟 Билеты" title="Спортивные события" subtitle="Лучшие матчи и соревнования России — покупай билеты онлайн" accent="blue" />
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
             {TICKETS.map((t) => (
-              <div key={t.event} className="rounded-2xl border border-white/5 p-5 card-hover cursor-pointer flex flex-col gap-4" style={{ background: "var(--card-bg)" }}>
+              <div key={t.event} className="rounded-2xl border border-black/8 p-5 card-hover cursor-pointer flex flex-col gap-4 shadow-sm" style={{ background: "var(--card-bg)" }}>
                 <div className="flex items-start justify-between">
                   <div>
                     {t.hot && <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold text-white mb-2 live-badge">🔥 Горячий</span>}
-                    <h3 className="font-semibold text-white leading-tight">{t.event}</h3>
+                    <h3 className="font-semibold text-gray-900 leading-tight">{t.event}</h3>
                     <p className="text-xs text-gray-400 mt-1 flex items-center gap-1"><Icon name="MapPin" size={11} />{t.venue}, {t.city}</p>
                   </div>
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs border border-white/10 text-gray-400 flex-shrink-0">{t.category}</span>
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs border border-black/10 text-gray-500 flex-shrink-0">{t.category}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1 text-sm font-semibold" style={{ color: "var(--neon-blue)" }}>
                     <Icon name="Calendar" size={14} />{t.date}
                   </div>
-                  <div className="text-lg font-bold text-white">{t.price}</div>
+                  <div className="text-lg font-bold text-gray-900">{t.price}</div>
                 </div>
                 <button className="w-full py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90" style={{ background: "linear-gradient(135deg, var(--neon-orange), #FF3D00)" }}>
                   Купить билет
@@ -441,27 +441,27 @@ export default function SportPass() {
               const tagColor = item.tag === "Хит" ? "var(--neon-orange)" : item.tag === "Скидка" ? "#EF4444" : item.tag === "Новинка" ? "var(--neon-blue)" : "#8B5CF6";
               const tagTextColor = item.tag === "Новинка" ? "#000" : "#fff";
               return (
-                <div key={item.name} className="rounded-2xl overflow-hidden border border-white/5 card-hover cursor-pointer" style={{ background: "var(--card-bg)" }}>
+                <div key={item.name} className="rounded-2xl overflow-hidden border border-black/8 card-hover cursor-pointer shadow-sm" style={{ background: "var(--card-bg)" }}>
                   <div className="relative h-48">
                     <img src={item.image} alt="" className="w-full h-full object-cover" />
                     <div className="absolute top-3 left-3">
                       <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold" style={{ background: tagColor, color: tagTextColor }}>{item.tag}</span>
                     </div>
-                    <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 flex items-center justify-center hover:bg-black/60 transition-colors">
-                      <Icon name="Heart" size={14} className="text-white" />
+                    <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/70 flex items-center justify-center hover:bg-white/90 transition-colors">
+                      <Icon name="Heart" size={14} className="text-gray-600" />
                     </button>
                   </div>
                   <div className="p-4">
-                    <h3 className="font-medium text-white text-sm mb-2 leading-tight">{item.name}</h3>
+                    <h3 className="font-medium text-gray-900 text-sm mb-2 leading-tight">{item.name}</h3>
                     <div className="flex items-center gap-1 mb-3">
-                      <Icon name="Star" size={12} className="text-yellow-400" />
-                      <span className="text-xs font-semibold text-white">{item.rating}</span>
+                      <Icon name="Star" size={12} className="text-yellow-500" />
+                      <span className="text-xs font-semibold text-gray-800">{item.rating}</span>
                       <span className="text-xs text-gray-400">({item.reviews})</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-lg font-bold text-white">{item.price}</span>
-                        {item.oldPrice && <span className="text-xs text-gray-500 line-through ml-2">{item.oldPrice}</span>}
+                        <span className="text-lg font-bold text-gray-900">{item.price}</span>
+                        {item.oldPrice && <span className="text-xs text-gray-400 line-through ml-2">{item.oldPrice}</span>}
                       </div>
                       <button className="w-9 h-9 rounded-xl flex items-center justify-center text-white transition-all hover:opacity-90" style={{ background: "var(--neon-orange)" }}>
                         <Icon name="ShoppingCart" size={16} />
@@ -476,33 +476,33 @@ export default function SportPass() {
       </section>
 
       {/* ===== CONSULTATIONS ===== */}
-      <section id="consultations" className="py-20" style={{ background: "#0E1118" }}>
+      <section id="consultations" className="py-20" style={{ background: "#eef1f7" }}>
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeader tag="💬 Консультации" title="Эксперты в твоём распоряжении" subtitle="Онлайн-консультации с сертифицированными тренерами и специалистами" accent="blue" />
           <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
             {CONSULTANTS.map((c) => (
-              <div key={c.name} className="rounded-2xl border border-white/5 p-5 card-hover cursor-pointer" style={{ background: "var(--card-bg)" }}>
+              <div key={c.name} className="rounded-2xl border border-black/8 p-5 card-hover cursor-pointer shadow-sm" style={{ background: "var(--card-bg)" }}>
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-bold text-white" style={{ background: "linear-gradient(135deg, var(--neon-orange), #FF3D00)" }}>
                     {c.name.split(" ").map(w => w[0]).join("")}
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className={`w-2 h-2 rounded-full ${c.available ? "bg-green-400 pulse-dot" : "bg-gray-500"}`} />
-                    <span className={`text-xs ${c.available ? "text-green-400" : "text-gray-500"}`}>{c.available ? "Онлайн" : "Офлайн"}</span>
+                    <span className={`w-2 h-2 rounded-full ${c.available ? "bg-green-500 pulse-dot" : "bg-gray-300"}`} />
+                    <span className={`text-xs ${c.available ? "text-green-600" : "text-gray-400"}`}>{c.available ? "Онлайн" : "Офлайн"}</span>
                   </div>
                 </div>
-                <h3 className="font-semibold text-white mb-1">{c.name}</h3>
+                <h3 className="font-semibold text-gray-900 mb-1">{c.name}</h3>
                 <p className="text-xs text-gray-400 mb-3">{c.spec}</p>
                 <div className="space-y-1.5 mb-4 text-xs text-gray-400">
-                  <div className="flex justify-between"><span>Опыт</span><span className="text-white font-medium">{c.exp}</span></div>
-                  <div className="flex justify-between"><span>Сессий</span><span className="text-white font-medium">{c.sessions.toLocaleString()}</span></div>
+                  <div className="flex justify-between"><span>Опыт</span><span className="text-gray-800 font-medium">{c.exp}</span></div>
+                  <div className="flex justify-between"><span>Сессий</span><span className="text-gray-800 font-medium">{c.sessions.toLocaleString()}</span></div>
                   <div className="flex justify-between"><span>Рейтинг</span><span className="font-bold" style={{ color: "var(--neon-orange)" }}>★ {c.rating}</span></div>
                 </div>
-                <div className="mb-4"><span className="font-bold text-white">{c.price}</span></div>
+                <div className="mb-4"><span className="font-bold text-gray-900">{c.price}</span></div>
                 <button
                   disabled={!c.available}
                   className="w-full py-2.5 rounded-xl text-sm font-bold transition-all"
-                  style={c.available ? { background: "var(--neon-orange)", color: "#fff" } : { background: "rgba(255,255,255,0.05)", color: "#6b7280", cursor: "not-allowed" }}
+                  style={c.available ? { background: "var(--neon-orange)", color: "#fff" } : { background: "rgba(0,0,0,0.05)", color: "#9ca3af", cursor: "not-allowed" }}
                 >
                   {c.available ? "Записаться" : "Недоступен"}
                 </button>
@@ -518,22 +518,22 @@ export default function SportPass() {
           <SectionHeader tag="👥 Сообщества" title="Найди своих" subtitle="Присоединяйся к тысячам атлетов по твоему виду спорта" accent="orange" />
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
             {COMMUNITIES.map((c) => (
-              <div key={c.name} className="rounded-2xl border border-white/5 p-5 card-hover cursor-pointer" style={{ background: "var(--card-bg)" }}>
+              <div key={c.name} className="rounded-2xl border border-black/8 p-5 card-hover cursor-pointer shadow-sm" style={{ background: "var(--card-bg)" }}>
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style={{ background: `${c.color}22`, border: `1.5px solid ${c.color}44` }}>🏅</div>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style={{ background: `${c.color}18`, border: `1.5px solid ${c.color}44` }}>🏅</div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-semibold text-white leading-tight">{c.name}</h3>
-                      {c.active && <div className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot" /><span className="text-xs text-green-400">Активно</span></div>}
+                      <h3 className="font-semibold text-gray-900 leading-tight">{c.name}</h3>
+                      {c.active && <div className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500 pulse-dot" /><span className="text-xs text-green-600">Активно</span></div>}
                     </div>
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold" style={{ background: `${c.color}22`, color: c.color }}>{c.sport}</span>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold" style={{ background: `${c.color}18`, color: c.color }}>{c.sport}</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between text-sm mb-4">
-                  <div className="flex items-center gap-1.5 text-gray-400"><Icon name="Users" size={14} /><span className="font-semibold text-white">{c.members}</span> участников</div>
+                  <div className="flex items-center gap-1.5 text-gray-400"><Icon name="Users" size={14} /><span className="font-semibold text-gray-800">{c.members}</span> участников</div>
                   <div className="flex items-center gap-1.5 text-gray-400"><Icon name="MessageSquare" size={14} /><span>{c.posts}</span></div>
                 </div>
-                <div className="h-1 rounded-full bg-white/5 overflow-hidden mb-4">
+                <div className="h-1 rounded-full bg-black/8 overflow-hidden mb-4">
                   <div className="h-full rounded-full" style={{ width: "70%", background: c.color }} />
                 </div>
                 <button className="w-full py-2 rounded-xl text-sm font-semibold border transition-all hover:opacity-80" style={{ borderColor: c.color, color: c.color }}>Вступить</button>
@@ -544,12 +544,12 @@ export default function SportPass() {
       </section>
 
       {/* ===== LIVE ===== */}
-      <section id="live" className="py-20" style={{ background: "#0E1118" }}>
+      <section id="live" className="py-20" style={{ background: "#eef1f7" }}>
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeader tag="📡 Прямые эфиры" title="Смотри и участвуй" subtitle="Тренировки, мастер-классы и Q&A в прямом эфире каждый день" accent="blue" />
           <div className="grid md:grid-cols-2 gap-5">
             {LIVE_STREAMS.map((s) => (
-              <div key={s.title} className="rounded-2xl overflow-hidden border border-white/5 card-hover cursor-pointer flex" style={{ background: "var(--card-bg)" }}>
+              <div key={s.title} className="rounded-2xl overflow-hidden border border-black/8 card-hover cursor-pointer flex shadow-sm" style={{ background: "var(--card-bg)" }}>
                 <div className="relative w-40 flex-shrink-0">
                   <img src={GYM_IMG} alt="" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.4)" }}>
@@ -565,7 +565,7 @@ export default function SportPass() {
                 <div className="p-4 flex flex-col justify-between">
                   <div>
                     <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold mb-2" style={{ background: "rgba(0,212,255,0.15)", color: "var(--neon-blue)" }}>{s.category}</span>
-                    <h3 className="font-semibold text-white text-sm leading-tight mb-1">{s.title}</h3>
+                    <h3 className="font-semibold text-gray-900 text-sm leading-tight mb-1">{s.title}</h3>
                     <p className="text-xs text-gray-400">{s.host}</p>
                   </div>
                   <div className="flex items-center gap-1 text-xs text-gray-400 mt-3"><Icon name="Eye" size={12} /><span>{s.viewers} смотрят</span></div>
@@ -582,20 +582,20 @@ export default function SportPass() {
           <SectionHeader tag="📦 Аренда экипировки" title="Возьми в аренду" subtitle="Профессиональное снаряжение без покупки — удобно и выгодно" accent="orange" />
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
             {RENTALS.map((r) => (
-              <div key={r.name} className="rounded-2xl border border-white/5 p-5 card-hover cursor-pointer" style={{ background: "var(--card-bg)" }}>
+              <div key={r.name} className="rounded-2xl border border-black/8 p-5 card-hover cursor-pointer shadow-sm" style={{ background: "var(--card-bg)" }}>
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold mb-2" style={{ background: "rgba(255,107,26,0.15)", color: "var(--neon-orange)" }}>{r.category}</span>
-                    <h3 className="font-semibold text-white">{r.name}</h3>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold mb-2" style={{ background: "rgba(232,80,10,0.1)", color: "var(--neon-orange)" }}>{r.category}</span>
+                    <h3 className="font-semibold text-gray-900">{r.name}</h3>
                   </div>
                   <div className="text-right">
-                    <div className="text-xs text-gray-500">Доступно</div>
-                    <div className="font-bold text-white">{r.available} шт.</div>
+                    <div className="text-xs text-gray-400">Доступно</div>
+                    <div className="font-bold text-gray-900">{r.available} шт.</div>
                   </div>
                 </div>
                 <div className="space-y-2 mb-4 text-sm">
-                  <div className="flex justify-between"><span className="text-gray-400">Стоимость</span><span className="font-bold text-white">{r.perDay}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-400">Залог</span><span className="text-gray-300">{r.deposit}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-400">Стоимость</span><span className="font-bold text-gray-900">{r.perDay}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-400">Залог</span><span className="text-gray-600">{r.deposit}</span></div>
                 </div>
                 <button className="w-full py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90" style={{ background: "linear-gradient(135deg, var(--neon-orange), #FF3D00)" }}>
                   Забронировать
@@ -607,61 +607,61 @@ export default function SportPass() {
       </section>
 
       {/* ===== PROFILE ===== */}
-      <section id="profile" className="py-20" style={{ background: "#0E1118" }}>
+      <section id="profile" className="py-20" style={{ background: "#eef1f7" }}>
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeader tag="👤 Профиль" title="Личный кабинет" subtitle="Отслеживай прогресс, управляй подпиской и настраивай рекомендации" accent="blue" />
           <div className="grid md:grid-cols-3 gap-5">
-            <div className="rounded-2xl border border-white/5 p-6" style={{ background: "var(--card-bg)" }}>
+            <div className="rounded-2xl border border-black/8 p-6 shadow-sm" style={{ background: "var(--card-bg)" }}>
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold text-white" style={{ background: "linear-gradient(135deg, var(--neon-orange), #FF3D00)" }}>АМ</div>
                 <div>
-                  <h3 className="font-semibold text-white">Алексей Морозов</h3>
+                  <h3 className="font-semibold text-gray-900">Алексей Морозов</h3>
                   <p className="text-xs text-gray-400">PRO участник с 2024</p>
-                  <div className="flex items-center gap-1 mt-1"><span className="w-2 h-2 rounded-full bg-green-400" /><span className="text-xs text-green-400">Активен</span></div>
+                  <div className="flex items-center gap-1 mt-1"><span className="w-2 h-2 rounded-full bg-green-500" /><span className="text-xs text-green-600">Активен</span></div>
                 </div>
               </div>
               <div className="space-y-3">
                 {[{ label: "Тренировок выполнено", val: "127" }, { label: "Часов активности", val: "94.5" }, { label: "Сожжено калорий", val: "48 200" }].map((s) => (
                   <div key={s.label} className="flex justify-between text-sm">
-                    <span className="text-gray-400">{s.label}</span><span className="font-bold text-white">{s.val}</span>
+                    <span className="text-gray-400">{s.label}</span><span className="font-bold text-gray-900">{s.val}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/5 p-6" style={{ background: "var(--card-bg)" }}>
-              <h3 className="font-semibold text-white mb-4">Активность за 7 дней</h3>
+            <div className="rounded-2xl border border-black/8 p-6 shadow-sm" style={{ background: "var(--card-bg)" }}>
+              <h3 className="font-semibold text-gray-900 mb-4">Активность за 7 дней</h3>
               <div className="flex items-end gap-2 h-24">
                 {[60, 85, 40, 90, 70, 95, 55].map((h, i) => (
-                  <div key={i} className="flex-1 rounded-t-md" style={{ height: `${h}%`, background: i === 5 ? "var(--neon-orange)" : "rgba(255,107,26,0.3)" }} />
+                  <div key={i} className="flex-1 rounded-t-md" style={{ height: `${h}%`, background: i === 5 ? "var(--neon-orange)" : "rgba(232,80,10,0.2)" }} />
                 ))}
               </div>
-              <div className="flex justify-between text-xs text-gray-500 mt-2">
+              <div className="flex justify-between text-xs text-gray-400 mt-2">
                 {["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"].map((d) => <span key={d}>{d}</span>)}
               </div>
-              <div className="mt-4 p-3 rounded-xl" style={{ background: "rgba(255,107,26,0.1)" }}>
-                <p className="text-xs text-gray-300">🎯 Цель: <span className="font-bold text-white">5 тренировок в неделю</span></p>
-                <div className="h-1 rounded-full bg-white/10 mt-2 overflow-hidden">
+              <div className="mt-4 p-3 rounded-xl" style={{ background: "rgba(232,80,10,0.08)" }}>
+                <p className="text-xs text-gray-600">🎯 Цель: <span className="font-bold text-gray-900">5 тренировок в неделю</span></p>
+                <div className="h-1 rounded-full bg-black/8 mt-2 overflow-hidden">
                   <div className="h-full rounded-full" style={{ width: "71%", background: "linear-gradient(90deg, var(--neon-orange), var(--neon-blue))" }} />
                 </div>
-                <p className="text-xs text-gray-400 mt-1">5 из 7 дней выполнено</p>
+                <p className="text-xs text-gray-500 mt-1">5 из 7 дней выполнено</p>
               </div>
             </div>
 
-            <div className="rounded-2xl border p-6" style={{ background: "var(--card-bg)", borderColor: "rgba(255,107,26,0.3)" }}>
+            <div className="rounded-2xl border p-6 shadow-sm" style={{ background: "var(--card-bg)", borderColor: "rgba(232,80,10,0.3)" }}>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-white">Подписка PRO</h3>
+                <h3 className="font-semibold text-gray-900">Подписка PRO</h3>
                 <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold text-white" style={{ background: "var(--neon-orange)" }}>Активна</span>
               </div>
               <div className="space-y-3 mb-6">
                 {["Безлимитные тренировки", "Приоритетные консультации", "Скидки в маркетплейсе 15%", "Закрытые эфиры", "Персональные рекомендации"].map((f) => (
-                  <div key={f} className="flex items-center gap-2 text-sm text-gray-300">
-                    <Icon name="Check" size={14} className="text-green-400 flex-shrink-0" />{f}
+                  <div key={f} className="flex items-center gap-2 text-sm text-gray-700">
+                    <Icon name="Check" size={14} className="text-green-500 flex-shrink-0" />{f}
                   </div>
                 ))}
               </div>
               <p className="text-xs text-gray-400 mb-4">Действует до 18 мая 2026</p>
-              <button className="w-full py-2.5 rounded-xl text-sm font-bold text-white border border-white/10 hover:border-white/30 transition-all">Управлять подпиской</button>
+              <button className="w-full py-2.5 rounded-xl text-sm font-bold text-gray-700 border border-black/10 hover:border-black/25 transition-all">Управлять подпиской</button>
             </div>
           </div>
         </div>
@@ -679,25 +679,25 @@ export default function SportPass() {
                 { icon: "MessageCircle", label: "Telegram", val: "@sportpass_support", note: "Быстрый ответ" },
                 { icon: "MapPin", label: "Офис", val: "Москва, ул. Спортивная, 1", note: "Пн–Пт, 10:00–19:00" },
               ].map((c) => (
-                <div key={c.label} className="flex items-center gap-4 p-4 rounded-xl border border-white/5 hover:border-white/10 transition-colors" style={{ background: "var(--card-bg)" }}>
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,107,26,0.15)" }}>
+                <div key={c.label} className="flex items-center gap-4 p-4 rounded-xl border border-black/8 hover:border-black/15 transition-colors shadow-sm" style={{ background: "var(--card-bg)" }}>
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(232,80,10,0.1)" }}>
                     <Icon name={c.icon} size={18} style={{ color: "var(--neon-orange)" }} />
                   </div>
                   <div>
                     <div className="text-xs text-gray-400">{c.label}</div>
-                    <div className="font-semibold text-white">{c.val}</div>
-                    <div className="text-xs text-gray-500">{c.note}</div>
+                    <div className="font-semibold text-gray-900">{c.val}</div>
+                    <div className="text-xs text-gray-400">{c.note}</div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="rounded-2xl border border-white/5 p-6" style={{ background: "var(--card-bg)" }}>
-              <h3 className="font-semibold text-white mb-5">Напиши нам</h3>
+            <div className="rounded-2xl border border-black/8 p-6 shadow-sm" style={{ background: "var(--card-bg)" }}>
+              <h3 className="font-semibold text-gray-900 mb-5">Напиши нам</h3>
               <div className="space-y-4">
-                <input type="text" placeholder="Твоё имя" className="w-full px-4 py-3 rounded-xl text-white text-sm outline-none border border-white/10 focus:border-orange-500/50 transition-colors placeholder-gray-600" style={{ background: "rgba(255,255,255,0.05)" }} />
-                <input type="email" placeholder="Email" className="w-full px-4 py-3 rounded-xl text-white text-sm outline-none border border-white/10 focus:border-orange-500/50 transition-colors placeholder-gray-600" style={{ background: "rgba(255,255,255,0.05)" }} />
-                <textarea placeholder="Сообщение" rows={4} className="w-full px-4 py-3 rounded-xl text-white text-sm outline-none border border-white/10 focus:border-orange-500/50 transition-colors resize-none placeholder-gray-600" style={{ background: "rgba(255,255,255,0.05)" }} />
+                <input type="text" placeholder="Твоё имя" className="w-full px-4 py-3 rounded-xl text-gray-900 text-sm outline-none border border-black/10 focus:border-orange-400 transition-colors placeholder-gray-400" style={{ background: "#f8f9fb" }} />
+                <input type="email" placeholder="Email" className="w-full px-4 py-3 rounded-xl text-gray-900 text-sm outline-none border border-black/10 focus:border-orange-400 transition-colors placeholder-gray-400" style={{ background: "#f8f9fb" }} />
+                <textarea placeholder="Сообщение" rows={4} className="w-full px-4 py-3 rounded-xl text-gray-900 text-sm outline-none border border-black/10 focus:border-orange-400 transition-colors resize-none placeholder-gray-400" style={{ background: "#f8f9fb" }} />
                 <button className="w-full py-3 rounded-xl font-bold text-white transition-all hover:opacity-90" style={{ background: "linear-gradient(135deg, var(--neon-orange), #FF3D00)" }}>
                   Отправить сообщение
                 </button>
@@ -708,16 +708,16 @@ export default function SportPass() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-white/5 py-10" style={{ background: "#080B10" }}>
+      <footer className="border-t border-black/8 py-10" style={{ background: "#e8ecf4" }}>
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-lg flex items-center justify-center font-display font-bold text-xs text-white" style={{ background: "var(--neon-orange)" }}>SP</div>
-            <span className="font-display text-base font-semibold text-white">SPORT<span style={{ color: "var(--neon-orange)" }}>PASS</span></span>
+            <span className="font-display text-base font-semibold text-gray-800">SPORT<span style={{ color: "var(--neon-orange)" }}>PASS</span></span>
           </div>
-          <p className="text-xs text-gray-600">© 2026 SportPass. Все права защищены.</p>
+          <p className="text-xs text-gray-400">© 2026 SportPass. Все права защищены.</p>
           <div className="flex items-center gap-4">
             {["Telegram", "Instagram", "YouTube"].map((s) => (
-              <button key={s} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">{s}</button>
+              <button key={s} className="text-xs text-gray-400 hover:text-gray-700 transition-colors">{s}</button>
             ))}
           </div>
         </div>
