@@ -23,7 +23,18 @@ const WORKOUTS = [
   { title: "Силовая: ноги и ягодицы", trainer: "Марина Орлова", duration: "60 мин", level: "Продвинутый", category: "Сила", match: 95, image: GYM_IMG },
   { title: "Йога: утреннее пробуждение", trainer: "Светлана Нова", duration: "30 мин", level: "Начинающий", category: "Йога", match: 91, image: GYM_IMG },
   { title: "Кроссфит: тотальная нагрузка", trainer: "Дмитрий Крат", duration: "50 мин", level: "Продвинутый", category: "Кроссфит", match: 87, image: GYM_IMG },
+  { title: "Бег: интервальная тренировка", trainer: "Сергей Быстров", duration: "40 мин", level: "Средний", category: "Кардио", match: 84, image: GYM_IMG },
+  { title: "Растяжка после тренировки", trainer: "Анна Мягкова", duration: "20 мин", level: "Начинающий", category: "Растяжка", match: 80, image: GYM_IMG },
+  { title: "Бокс: базовая техника ударов", trainer: "Павел Стальной", duration: "55 мин", level: "Средний", category: "Бокс", match: 77, image: GYM_IMG },
+  { title: "Силовая: грудь и спина", trainer: "Игорь Громов", duration: "60 мин", level: "Продвинутый", category: "Сила", match: 74, image: GYM_IMG },
+  { title: "Йога: вечернее расслабление", trainer: "Светлана Нова", duration: "35 мин", level: "Начинающий", category: "Йога", match: 72, image: GYM_IMG },
+  { title: "Кроссфит: Murph Challenge", trainer: "Дмитрий Крат", duration: "70 мин", level: "Продвинутый", category: "Кроссфит", match: 69, image: GYM_IMG },
+  { title: "Велотренировка: выносливость", trainer: "Ольга Скорова", duration: "50 мин", level: "Средний", category: "Кардио", match: 66, image: GYM_IMG },
+  { title: "Бокс: работа на мешке", trainer: "Павел Стальной", duration: "45 мин", level: "Начинающий", category: "Бокс", match: 63, image: GYM_IMG },
 ];
+
+const CATEGORIES = ["Все", "Кардио", "Сила", "Йога", "Кроссфит", "Растяжка", "Бокс"];
+const LEVELS = ["Любой уровень", "Начинающий", "Средний", "Продвинутый"];
 
 const TICKETS = [
   { event: "Чемпионат по боксу", date: "24 апр", venue: "Лужники", city: "Москва", price: "от 1 500 ₽", category: "Бокс", hot: true },
@@ -92,6 +103,14 @@ function SectionHeader({ tag, title, subtitle, accent }: { tag: string; title: s
 export default function SportPass() {
   const [activeSection, setActiveSection] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [filterCategory, setFilterCategory] = useState("Все");
+  const [filterLevel, setFilterLevel] = useState("Любой уровень");
+
+  const filteredWorkouts = WORKOUTS.filter((w) => {
+    const catOk = filterCategory === "Все" || w.category === filterCategory;
+    const lvlOk = filterLevel === "Любой уровень" || w.level === filterLevel;
+    return catOk && lvlOk;
+  });
 
   const scrollTo = (id: string) => {
     setActiveSection(id);
@@ -253,37 +272,128 @@ export default function SportPass() {
       <section id="workouts" className="py-20" style={{ background: "var(--dark-bg)" }}>
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeader tag="💪 Тренировки" title="Программы под тебя" subtitle="ИИ подбирает занятия на основе твоей истории и интересов" accent="orange" />
-          <div className="flex flex-wrap gap-2 mb-8">
-            {["Все", "Кардио", "Сила", "Йога", "Кроссфит", "Растяжка", "Бокс"].map((cat) => (
-              <button key={cat} className="px-4 py-1.5 rounded-full text-sm font-medium transition-all" style={cat === "Все" ? { background: "var(--neon-orange)", color: "#fff" } : { border: "1px solid rgba(255,255,255,0.1)", color: "#9ca3af" }}>
-                {cat}
-              </button>
-            ))}
-          </div>
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
-            {WORKOUTS.map((w) => (
-              <div key={w.title} className="rounded-2xl overflow-hidden border border-white/5 card-hover cursor-pointer" style={{ background: "var(--card-bg)" }}>
-                <div className="relative h-40">
-                  <img src={w.image} alt="" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(11,14,20,0.9) 0%, transparent 60%)" }} />
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold text-white" style={{ background: "var(--neon-orange)" }}>{w.match}% совпадение</span>
-                  </div>
-                  <div className="absolute bottom-3 left-3">
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs border border-white/20 text-white">{w.category}</span>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold text-white mb-1 leading-tight">{w.title}</h3>
-                  <p className="text-xs text-gray-400 mb-3">{w.trainer}</p>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-400 flex items-center gap-1"><Icon name="Clock" size={12} />{w.duration}</span>
-                    <span className="px-2 py-0.5 rounded-full text-xs" style={{ background: "rgba(255,107,26,0.15)", color: "var(--neon-orange)" }}>{w.level}</span>
-                  </div>
-                </div>
+
+          {/* Filters */}
+          <div className="rounded-2xl border border-white/5 p-4 mb-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center" style={{ background: "var(--card-bg)" }}>
+            {/* Category filter */}
+            <div className="flex-1">
+              <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-2">Категория</p>
+              <div className="flex flex-wrap gap-2">
+                {CATEGORIES.map((cat) => {
+                  const active = filterCategory === cat;
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => setFilterCategory(cat)}
+                      className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
+                      style={active
+                        ? { background: "var(--neon-orange)", color: "#fff" }
+                        : { border: "1px solid rgba(255,255,255,0.1)", color: "#9ca3af" }
+                      }
+                    >
+                      {cat}
+                    </button>
+                  );
+                })}
               </div>
-            ))}
+            </div>
+
+            {/* Divider */}
+            <div className="hidden sm:block w-px h-12 bg-white/5" />
+
+            {/* Level filter */}
+            <div className="flex-shrink-0">
+              <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-2">Уровень</p>
+              <div className="flex flex-wrap gap-2">
+                {LEVELS.map((lvl) => {
+                  const active = filterLevel === lvl;
+                  const lvlColor: Record<string, string> = { "Начинающий": "#22C55E", "Средний": "#EAB308", "Продвинутый": "#EF4444" };
+                  const color = lvlColor[lvl] ?? "var(--neon-orange)";
+                  return (
+                    <button
+                      key={lvl}
+                      onClick={() => setFilterLevel(lvl)}
+                      className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
+                      style={active
+                        ? { background: color, color: "#fff" }
+                        : { border: "1px solid rgba(255,255,255,0.1)", color: "#9ca3af" }
+                      }
+                    >
+                      {lvl}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Reset + counter */}
+            {(filterCategory !== "Все" || filterLevel !== "Любой уровень") && (
+              <button
+                onClick={() => { setFilterCategory("Все"); setFilterLevel("Любой уровень"); }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition-all flex-shrink-0"
+              >
+                <Icon name="X" size={11} />
+                Сбросить
+              </button>
+            )}
           </div>
+
+          {/* Results count */}
+          <div className="flex items-center justify-between mb-5">
+            <p className="text-sm text-gray-400">
+              Найдено: <span className="font-semibold text-white">{filteredWorkouts.length}</span> тренировок
+            </p>
+            {filteredWorkouts.length > 0 && (
+              <p className="text-xs text-gray-500">
+                Сортировка: <span style={{ color: "var(--neon-orange)" }}>по совпадению</span>
+              </p>
+            )}
+          </div>
+
+          {/* Grid */}
+          {filteredWorkouts.length > 0 ? (
+            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+              {filteredWorkouts.map((w) => {
+                const lvlColor: Record<string, string> = { "Начинающий": "#22C55E", "Средний": "#EAB308", "Продвинутый": "#EF4444" };
+                return (
+                  <div key={w.title} className="rounded-2xl overflow-hidden border border-white/5 card-hover cursor-pointer" style={{ background: "var(--card-bg)" }}>
+                    <div className="relative h-40">
+                      <img src={w.image} alt="" className="w-full h-full object-cover" />
+                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(11,14,20,0.9) 0%, transparent 60%)" }} />
+                      <div className="absolute top-3 right-3">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold text-white" style={{ background: "var(--neon-orange)" }}>{w.match}% совпадение</span>
+                      </div>
+                      <div className="absolute bottom-3 left-3">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs border border-white/20 text-white">{w.category}</span>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-semibold text-white mb-1 leading-tight">{w.title}</h3>
+                      <p className="text-xs text-gray-400 mb-3">{w.trainer}</p>
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-gray-400 flex items-center gap-1"><Icon name="Clock" size={12} />{w.duration}</span>
+                        <span className="px-2 py-0.5 rounded-full text-xs font-semibold" style={{ background: `${lvlColor[w.level]}22`, color: lvlColor[w.level] }}>{w.level}</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="text-center py-16 rounded-2xl border border-white/5" style={{ background: "var(--card-bg)" }}>
+              <div className="text-4xl mb-3">🔍</div>
+              <p className="text-white font-semibold mb-1">Тренировок не найдено</p>
+              <p className="text-gray-400 text-sm mb-4">Попробуй изменить фильтры</p>
+              <button
+                onClick={() => { setFilterCategory("Все"); setFilterLevel("Любой уровень"); }}
+                className="px-5 py-2 rounded-xl text-sm font-semibold text-white transition-all"
+                style={{ background: "var(--neon-orange)" }}
+              >
+                Сбросить фильтры
+              </button>
+            </div>
+          )}
+
           <div className="mt-8 text-center">
             <button className="px-8 py-3 rounded-xl font-semibold border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition-all">
               Смотреть все 50 000+ тренировок
